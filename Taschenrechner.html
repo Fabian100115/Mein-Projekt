@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+	Taschenrechner
+	</title>
+	<style type="text/css">
+        button{
+            width: 100px;
+            height: 100px;
+            font-size: 50px;
+            border: 5px solid black;
+        } 
+        .gros{
+            height: 100px;
+            width: 200px;
+        }
+        button:hover{
+            background-color: darkgray;
+        }
+	</style>
+    <script>
+    var zwsch = ""
+    var w1 = ""
+    var w2 = ""
+    var op = ""
+    var res = ""
+    function pick(zz) {
+        if (!isNaN(zz)) {
+            zwsch += "" + zz + ""
+        } else {
+            if (zz != "=" && zz != "C") {
+                op = "" + zz + ""
+                w1 = zwsch
+                zwsch = ""
+            }
+            if (zz == "=") {
+                w2 = zwsch
+                rechnen();
+            }
+            if (zz == "C") {
+                console.log(location.reload());
+            }   
+        }
+    }
+    function rechnen() {
+        w1 = parseInt(w1);
+        w2 = parseInt(w2);
+        if (op == "+") {
+            res = w1 + w2
+        }
+        if (op == "-") {
+            res = w1 - w2
+        }
+        if (op == "*") {
+            res = w1 * w2
+        }
+        if (op == "/") {
+            res = w1 / w2
+        }
+        alert(res);
+        console.log(location.reload());
+    }
+    </script>   
+</head>
+<body>
+    <table>
+        <tr>
+            <button class = "gros" onclick = 'pick("C")'>C</button>
+            <button class = "gros" onclick = 'pick("/")'>/</button>
+        </tr><br>
+        <tr>
+            <button onclick = 'pick("7")'>7</button>
+            <button onclick = 'pick("8")'>8</button>
+            <button onclick = 'pick("9")'>9</button>
+            <button onclick = 'pick("*")'>*</button>
+        </tr><br>
+        <tr>
+            <button onclick = 'pick("4")'>4</button>
+            <button onclick = 'pick("5")'>5</button>
+            <button onclick = 'pick("6")'>6</button>
+            <button onclick = 'pick("-")'>-</button>
+        </tr><br>
+        <tr>
+            <button onclick = 'pick("1")'>1</button>
+            <button onclick = 'pick("2")'>2</button>
+            <button onclick = 'pick("3")'>3</button>
+            <button onclick = 'pick("+")'>+</button>
+        </tr><br>
+        <tr>
+            <button class = "gros" onclick = 'pick("0")'>0</button>
+            <button class = "gros" onclick = 'pick("=")'>=</button>
+        </tr>
+    </table>
+</body>
+</html>
